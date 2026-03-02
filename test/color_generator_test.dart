@@ -7,13 +7,15 @@ void main() {
   group('ColorGenerator Unit Tests', () {
     test('generateRandomColor returns a valid opaque Color', () {
       final color = ColorGenerator.generateRandomColor();
+      const maxRgbNumber = 0xFFFFFFFF;
+      const minRgbNumber = 0xFF000000;
 
       expect(color, isA<Color>());
 
       expect(color.a, equals(1.0));
 
-      expect(color.toARGB32(), greaterThanOrEqualTo(0xFF000000));
-      expect(color.toARGB32(), lessThanOrEqualTo(0xFFFFFFFF));
+      expect(color.toARGB32(), greaterThanOrEqualTo(minRgbNumber));
+      expect(color.toARGB32(), lessThanOrEqualTo(maxRgbNumber));
     });
 
     test(
